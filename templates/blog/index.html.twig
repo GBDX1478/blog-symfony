@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BlogController!{% endblock %}
+
+{% block body %}
+
+{{ dump(article) }}
+
+
+ {% for article in article %}
+  <div class="post-preview">
+          
+            <a href="{{ path('article', {id : article.id}) }}">
+            <h2 class="post-title">
+             {{article.title}}
+            </h2>
+            <h3 class="post-subtitle">
+            {{article.content}}
+            </h3>
+          </a>
+          <img src="{{ asset('img/'~article.picture) }}">
+          <p class="post-meta">Posted by
+            <a href="#">Start Bootstrap</a>
+            on {{article.publishedAt|date('d/m/y')}}</p>
+        </div>
+        {% endfor %}
+
+{% endblock %}
